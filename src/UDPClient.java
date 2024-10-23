@@ -13,7 +13,7 @@ public class UDPClient {
         this.serverPort = serverPort;
     }
 
-
+    // Méthode pour envoyer des messages
     public void sendMessages() {
         try {
             DatagramSocket socket = new DatagramSocket();
@@ -33,14 +33,14 @@ public class UDPClient {
                     break;
                 }
 
-
+                // Encoder le message en UTF-8
                 byte[] buffer = message.getBytes("UTF-8");
 
 
                 DatagramPacket packet = new DatagramPacket(buffer, buffer.length,
                         InetAddress.getByName(serverAddress), serverPort);
 
-
+                // Envoyer le paquet
                 socket.send(packet);
                 System.out.println("Message envoyé : " + message);
             }

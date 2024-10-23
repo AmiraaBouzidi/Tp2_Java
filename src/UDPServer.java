@@ -6,17 +6,19 @@ public class UDPServer {
     private int port;
     private DatagramSocket socket;
 
-
+    // Constructeur avec argument (port)
     public UDPServer(int port) {
+
         this.port = port;
     }
 
-
+    // Constructeur par défaut
     public UDPServer() {
+
         this(8080);
     }
 
-
+    // Démarrage du serveur
     public void launch() {
         try {
             socket = new DatagramSocket(port);
@@ -45,6 +47,7 @@ public class UDPServer {
 
     @Override
     public String toString() {
+
         return "UDPServer listening on port " + port;
     }
 
