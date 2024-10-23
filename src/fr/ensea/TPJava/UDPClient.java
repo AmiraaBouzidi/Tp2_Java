@@ -1,13 +1,21 @@
+package fr.ensea.TPJava;
 import java.io.Console;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
-
+/**
+ * Classe représentant un client UDP qui envoie des messages à un serveur.
+ */
 public class UDPClient {
     private String serverAddress;
     private int serverPort;
 
-
+    /**
+     * Constructeur pour initialiser l'adresse et le port du serveur.
+     *
+     * @param serverAddress l'adresse du serveur
+     * @param serverPort le port du serveur
+     */
     public UDPClient(String serverAddress, int serverPort) {
         this.serverAddress = serverAddress;
         this.serverPort = serverPort;
@@ -50,7 +58,11 @@ public class UDPClient {
             e.printStackTrace();
         }
     }
-
+    /**
+     * Méthode principale pour démarrer le client UDP.
+     *
+     * @param args arguments de la ligne de commande, adresse du serveur et port
+     */
     public static void main(String[] args) {
         if (args.length < 2) {
             System.out.println("Usage: java UDPClient <adresse_serveur> <port>");

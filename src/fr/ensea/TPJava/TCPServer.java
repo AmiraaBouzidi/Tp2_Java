@@ -1,3 +1,5 @@
+package fr.ensea.TPJava;
+
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
@@ -8,7 +10,11 @@ public class TCPServer {
     private int port;
     private ServerSocket serverSocket;
 
-    // Constructeur avec argument (port)
+    /**
+     * Constructeur avec argument spécifiant le port d'écoute.
+     *
+     * @param port le port sur lequel le serveur doit écouter
+     */
     public TCPServer(int port) {
         this.port = port;
     }
@@ -65,7 +71,11 @@ public class TCPServer {
     public String toString() {
         return "TCPServer listening on port " + port;
     }
-
+    /**
+     * Méthode principale pour démarrer le serveur TCP.
+     *
+     * @param args arguments de la ligne de commande, port d'écoute optionnel
+     */
     public static void main(String[] args) {
         int port = (args.length > 0) ? Integer.parseInt(args[0]) : 8080;
         TCPServer server = new TCPServer(port);

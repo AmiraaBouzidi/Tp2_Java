@@ -1,3 +1,5 @@
+package fr.ensea.TPJava;
+
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
@@ -6,7 +8,11 @@ public class UDPServer {
     private int port;
     private DatagramSocket socket;
 
-    // Constructeur avec argument (port)
+    /**
+     * Constructeur avec argument spécifiant le port d'écoute.
+     *
+     * @param port le port sur lequel le serveur doit écouter
+     */
     public UDPServer(int port) {
 
         this.port = port;
@@ -51,7 +57,11 @@ public class UDPServer {
         return "UDPServer listening on port " + port;
     }
 
-
+    /**
+     * Méthode principale pour démarrer le serveur UDP.
+     *
+     * @param args arguments de la ligne de commande, port d'écoute optionnel
+     */
     public static void main(String[] args) {
         int port = (args.length > 0) ? Integer.parseInt(args[0]) : 8080;
         UDPServer server = new UDPServer(port);
