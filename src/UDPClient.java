@@ -1,0 +1,66 @@
+import java.io.Console;
+import java.net.DatagramPacket;
+import java.net.DatagramSocket;
+import java.net.InetAddress;
+
+public class UDPClient {
+    private String serverAddress;
+    private int serverPort;
+
+
+    public UDPClient(String serverAddress, int serverPort) {
+        this.serverAddress = serverAddress;
+        this.serverPort = serverPort;
+    }
+
+
+    public void sendMessages() {
+        try {
+            DatagramSocket socket = new DatagramSocket();
+
+
+            Console console = System.console();
+            if (console == null) {
+                System.out.println("Aucune console disponible !");
+                return;
+            }
+
+            String message;
+            while (true) {
+
+                message = console.readLine("Entrez un message (ou 'exit' pour quitter) : ");
+                if (message.equalsIgnoreCase("exit")) {
+                    break;
+                }
+
+
+                byte[] buffer = message.getBytes("UTF-8");
+
+
+                DatagramPacket packet = new DatagramPacket(buffer, buffer.length,
+                        InetAddress.getByName(serverAddress), serverPort);
+
+
+                socket.send(packet);
+                System.out.println("Message envoyé : " + message);
+            }
+
+            socket.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void main(String[] args) {
+        if (args.length < 2) {
+            System.out.println("Usage: java UDPClient <adresse_serveur> <port>");
+            return;
+        }
+
+        String serverAddress = args[0];
+        int serverPort = Integer.parseInt(args[1]);
+
+        UDPClient client = new UDPClient(serverAddress, serverPort);
+        client.sendMessages();
+    }
+}
