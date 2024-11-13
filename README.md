@@ -50,15 +50,21 @@ functioning as intended, reliably handling and responding to client requests.
 
     2.2 TCP Client
 
+Now, We will create a TCPClient class on the model of UDPClient, which establishes a TCP connection
+with the server specified on the command line (address, port). Once the connection is established,
+this client reads a line of text from the standard input by the user, sends it to the server
+after encoding it in UTF8, and reads the hexa text line returned by the server as a response.
 
-
-    ![Capture d'écran 2024-11-13 143614](https://github.com/user-attachments/assets/749b08d1-0a6b-4bc6-8c47-3488104c9a39)
-
+![Capture d'écran 2024-11-13 143614](https://github.com/user-attachments/assets/1253a136-a5e6-481c-b611-6c0908009a03)
 
 
     2.3 Server accepting multiple TCP connections
+To create a server capable of accepting multiple simultaneous TCP connections in Java, you can follow these steps using threads to handle each client concurrently.
 
+* Create a TCPMultiServer class: This class listens for incoming connections and creates a new thread for each client that connects.
+
+* Handle multiple clients with threads: Use a ConnectionThread class for each client. This class will inherit from Thread and contain a loop in the run() method to read and respond to messages from the client.
 
 ![Capture d'écran 2024-11-13 150104](https://github.com/user-attachments/assets/32833ad2-f9a6-4e20-920a-6d77dcbf4d29)
 
-  
+  TCPMultiServer is working correctly, accepting multiple TCP connections and responding to each message with an echo. We used Telnet to test the functionality by sending multiple messages from a client, and the server responded appropriately with the prefix Echo du serveur.
