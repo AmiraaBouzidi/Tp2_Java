@@ -59,6 +59,7 @@ after encoding it in UTF8, and reads the hexa text line returned by the server a
 
 
     2.3 Server accepting multiple TCP connections
+    
 To create a server capable of accepting multiple simultaneous TCP connections in Java, you can follow these steps using threads to handle each client concurrently.
 
 * Create a TCPMultiServer class: This class listens for incoming connections and creates a new thread for each client that connects.
