@@ -69,4 +69,4 @@ To create a server capable of accepting multiple simultaneous TCP connections in
 ![image](https://github.com/user-attachments/assets/a564d966-3d84-4bc5-99d0-63f080e02701)
 
 
-  TCPMultiServer is working correctly, accepting multiple TCP connections and responding to each message with an echo. We used Telnet to test the functionality by sending multiple messages from a client, and the server responded appropriately with the prefix Echo du serveur.
+  TCPMultiServer is working correctly, accepting multiple TCP connections and responding to each message with an echo. We used Netcat to test the functionality by sending multiple messages from two clients, and the server responded appropriately.
