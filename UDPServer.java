@@ -9,22 +9,21 @@ public class UDPServer {
     private DatagramSocket socket;
 
     /**
-     * Constructeur avec argument spécifiant le port d'écoute.
+     * Constructor with an argument specifying the listening port.
      *
-     * @param port le port sur lequel le serveur doit écouter
+     * @param port the port number on which the server will listen
      */
     public UDPServer(int port) {
 
         this.port = port;
     }
 
-    // Constructeur par défaut
+   
     public UDPServer() {
 
         this(8080);
     }
 
-    // Démarrage du serveur
     public void launch() {
         try {
             socket = new DatagramSocket(port);
@@ -56,12 +55,15 @@ public class UDPServer {
 
         return "UDPServer listening on port " + port;
     }
-
-    /**
-     * Méthode principale pour démarrer le serveur UDP.
+    
+/**
+     * Main method to start the UDP server.
+     * If a port number is provided in the command-line arguments, the server
+     * will listen on that port. Otherwise, it defaults to port 8080.
      *
-     * @param args arguments de la ligne de commande, port d'écoute optionnel
+     * @param args command-line arguments, optional port number
      */
+    
     public static void main(String[] args) {
         int port = (args.length > 0) ? Integer.parseInt(args[0]) : 8080;
         UDPServer server = new UDPServer(port);
