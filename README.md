@@ -66,6 +66,7 @@ To create a server capable of accepting multiple simultaneous TCP connections in
 
 * Handle multiple clients with threads: Use a ConnectionThread class for each client. This class will inherit from Thread and contain a loop in the run() method to read and respond to messages from the client.
 
-![Capture d'écran 2024-11-13 150104](https://github.com/user-attachments/assets/32833ad2-f9a6-4e20-920a-6d77dcbf4d29)
+![image](https://github.com/user-attachments/assets/a564d966-3d84-4bc5-99d0-63f080e02701)
+
 
   TCPMultiServer is working correctly, accepting multiple TCP connections and responding to each message with an echo. We used Telnet to test the functionality by sending multiple messages from a client, and the server responded appropriately with the prefix Echo du serveur.
