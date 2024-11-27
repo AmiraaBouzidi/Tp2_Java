@@ -37,7 +37,7 @@ public class TCPClient {
         serverInput = new BufferedReader(new InputStreamReader(socket.getInputStream(), "UTF-8"));
         serverOutput = new PrintWriter(new OutputStreamWriter(socket.getOutputStream(), "UTF-8"), true);
 
-        System.out.println("Connected to the server at " + serverAddress + ":" + port);
+        LOGGER.log(Level.INFO, "Connected to the server at {0}:{1}", new Object[]{serverAddress, port});
     }
 
 
@@ -49,9 +49,9 @@ public class TCPClient {
 
                 String serverResponse = serverInput.readLine();
                 if (serverResponse != null) {
-                    System.out.println("Response from server: " + serverResponse);
+                    LOGGER.log(Level.INFO, "Response from server: {0}", serverResponse);
                 } else {
-                    System.out.println("Server closed the connection.");
+                    LOGGER.log(Level.WARNING, "Server closed the connection.");
                     break;
                 }
             }
@@ -77,9 +77,9 @@ public class TCPClient {
             if (socket != null && !socket.isClosed()) {
                 socket.close();
             }
-            System.out.println("Disconnected from the server.");
+            LOGGER.log(Level.INFO, "Disconnected from the server.");
         } catch (Exception e) {
-            e.printStackTrace();
+            LOGGER.log(Level.SEVERE, "Error while closing resources", e);
         }
     }
 
@@ -102,7 +102,7 @@ public class TCPClient {
             client.connect();
             client.startCommunication();
         } catch (Exception e) {
-            e.printStackTrace();
+            LOGGER.log(Level.SEVERE, "Failed to start the client", e);
         }
     }
 }
