@@ -5,9 +5,12 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.net.Socket;
-
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class TCPClient {
+    private static final Logger LOGGER = Logger.getLogger(TCPMultiServer.class.getName());
+
     private String serverAddress;
     private int port;
     private Socket socket;
