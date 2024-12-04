@@ -1,5 +1,3 @@
-package fr.ensea.TPJava;
-
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -16,7 +14,7 @@ public class UDPServerTest {
 
     @BeforeEach
     public void setUp() {
-        udpServer = new UDPServer(9999);
+        udpServer = new UDPServer(8081);
         serverThread = new Thread(() -> {
             try {
                 udpServer.setMessageListener((clientAddress, clientPort, message) -> {
@@ -41,7 +39,7 @@ public class UDPServerTest {
         assertDoesNotThrow(() -> {
             DatagramSocket socket = new DatagramSocket();
             byte[] buffer = "Hello Server".getBytes("UTF-8");
-            DatagramPacket packet = new DatagramPacket(buffer, buffer.length, InetAddress.getByName("localhost"), 9999);
+            DatagramPacket packet = new DatagramPacket(buffer, buffer.length, InetAddress.getByName("localhost"), 8081);
             socket.send(packet);
             socket.close();
         });
